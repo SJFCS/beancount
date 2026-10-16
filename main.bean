@@ -17,30 +17,30 @@ option "operating_currency" "CNY" ;账本主货币
 
 ;2、账户初始化
 2019-08-27 * "" "银行卡，初始余额10000元"
-    Assets:Card:1234           10000.00 CNY
-    Equity:OpenBalance        -10000.00 CNY
+    Assets:Card:1234                               10000.00 CNY
+    Equity:OpenBalance                            -10000.00 CNY
 2019-08-27 * "" "银行卡，初始余额10000元"
-    Assets:Card:工商           20000.00 CNY
-    Equity:OpenBalance        -20000.00 CNY
+    Assets:Card:工商                                 20000.00 CNY
+    Equity:OpenBalance                            -20000.00 CNY
 ;【三、交易记录】
 2019-08-28 * "杭州出租车公司" "打车到公司，银行卡支付"
-    Expenses:Traffic:Taxi        200.00 CNY
-    Liabilities:CreditCard:5678            -200.00 CNY
+    Expenses:Traffic:Taxi                            200.00 CNY
+    Liabilities:CreditCard:5678                     -200.00 CNY
 
 ;【三、交易记录】
 2019-08-28 * "杭州出租车公司" "打车到公司，银行卡支付"
-    Expenses:Traffic:Taxi        200.00 CNY
-    Assets:Card:1234            -200.00 CNY
+    Expenses:Traffic:Taxi                            200.00 CNY
+    Assets:Card:1234                                -200.00 CNY
 
 2019-08-29 * "" "餐饮"
-    Assets:Card:1234           -1100.00 CNY
-    Liabilities:CreditCard:5678 1100.00 CNY
+    Assets:Card:1234                               -1100.00 CNY
+    Liabilities:CreditCard:5678                     1100.00 CNY
     
 2019-08-31 * "XX公司" "工资收入"
-    Assets:Card:1234           12000.00 CNY
-    Expenses:Tax车                1000.00 CNY
+    Assets:Card:1234                               12000.00 CNY
+    Expenses:Tax车                                   1000.00 CNY
     Income:Salary             
 
 2019-08-31 * "XX公司" "工资收入"
-    Assets:Card:工商           12000.00 CNY
+    Assets:Card:工商                                 12000.00 CNY
     Income:副业           
