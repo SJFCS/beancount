@@ -6522,3 +6522,10 @@ option "operating_currency" "USD"
   Liabilities:AccountsPayable                          -336 USD
   Expenses:Food:Alcohol                                 336 USD
 
+
+2026-10-03 document Expenses:Financial:Fees "documents/2026-10-03-receipt-rcpt_bd127ca2bb6b.jpg" ^rcpt_bd127ca2bb6b
+
+2026-10-03 * "减龄（北京）科技有限公司" "服务 - service payment" ^rcpt_bd127ca2bb6b
+  Expenses:Financial:Fees                            336.00 USD
+  Assets:US:ETrade:GLD                              -336.00 USD
+
