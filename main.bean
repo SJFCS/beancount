@@ -45,3 +45,6 @@ option "operating_currency" "CNY" ;账本主货币
     Assets:Card:工商                                 12000.00 CNY
     Income:副业           
 
+
+2026-10-17 custom "budget" Expenses:Tax车 "MONTHLY" 100 CNY
+
