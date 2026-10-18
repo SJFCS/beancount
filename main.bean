@@ -1,46 +1,43 @@
-;【一、账本信息】
-option "title" "我的账本" ;账本名称
-option "operating_currency" "CNY" ;账本主货币
-
-;【二、账户设置】
-;1、开设账户
-1990-01-01 open Assets:Card:1234 CNY, USD ;尾号1234的银行卡，支持CNY和USD
-1990-01-01 open Assets:Card:工商 CNY, USD ;尾号1234的银行卡，支持CNY和USD
-
-1990-01-01 open Liabilities:CreditCard:5678 CNY, USD ;双币信用卡
-1990-01-01 open Income:Salary CNY ;工资收入
-1990-01-01 open Income:副业 CNY ;副业
-
-1990-01-01 open Expenses:Tax车 CNY ;交税
-1990-01-01 open Expenses:Traffic:Taxi CNY ;打车消费，只支持CNY
-1990-01-01 open Equity:OpenBalance ;用于账户初始化，支持任意货币
-
-;2、账户初始化
-2019-08-27 * "" "银行卡，初始余额10000元"
-    Assets:Card:1234           10000.00 CNY
-    Equity:OpenBalance        -10000.00 CNY
-2019-08-27 * "" "银行卡，初始余额10000元"
-    Assets:Card:工商           20000.00 CNY
-    Equity:OpenBalance        -20000.00 CNY
-;【三、交易记录】
-2019-08-28 * "杭州出租车公司" "打车到公司，银行卡支付"
-    Expenses:Traffic:Taxi        200.00 CNY
-    Liabilities:CreditCard:5678            -200.00 CNY
-
-;【三、交易记录】
-2019-08-28 * "杭州出租车公司" "打车到公司，银行卡支付"
-    Expenses:Traffic:Taxi        200.00 CNY
-    Assets:Card:1234            -200.00 CNY
-
-2019-08-29 * "" "餐饮"
-    Assets:Card:1234           -1100.00 CNY
-    Liabilities:CreditCard:5678 1100.00 CNY
-    
-2019-08-31 * "XX公司" "工资收入"
-    Assets:Card:1234           12000.00 CNY
-    Expenses:Tax车                1000.00 CNY
-    Income:Salary             
-
-2019-08-31 * "XX公司" "工资收入"
-    Assets:Card:工商           12000.00 CNY
-    Income:副业           
+option "title" "Liability Sign Demo"
+option "operating_currency" "USD"
+2023-01-01 open Assets:Cash                         USD
+2023-01-01 open Equity:Opening-Balances             USD
+2024-01-01 open Liabilities:Mortgage                USD
+2024-01-01 open Liabilities:CreditCard              USD
+2024-01-01 open Expenses:Household                  USD
+2024-01-01 open Expenses:Mortgage:Interest          USD
+2024-01-01 open Expenses:Groceries                  USD
+2024-01-01 open Income:Salary                       USD
+;; Start with 10,000 cash.
+2023-12-31 * "Opening balance"
+  Assets:Cash                                 10000.00 USD
+  Equity:Opening-Balances                    -10000.00 USD
+;; Borrow 5,000 cash. Assets +5,000, liabilities increase by 5,000.
+2024-02-01 * "Borrow mortgage"
+  Assets:Cash                                  5000.00 USD
+  Liabilities:Mortgage                        -5000.00 USD
+;; Spend 1,000 of the borrowed cash.
+2024-03-01 * "Buy household goods"
+  Expenses:Household                           1000.00 USD
+  Assets:Cash                                 -1000.00 USD
+;; Buy 978 of groceries on the credit card.
+;; This creates 978 of expense and 978 of new debt, but no cash inflow.
+2024-04-01 * "Buy groceries with credit card"
+  Expenses:Groceries                            978.00 USD
+  Liabilities:CreditCard                       -978.00 USD
+;; Repay 2,000 of mortgage principal. Debt falls, cash falls.
+2025-03-01 * "Repay mortgage principal"
+  Liabilities:Mortgage                         2000.00 USD
+  Assets:Cash                                 -2000.00 USD
+;; Repay the 978 credit-card balance. Debt falls, cash falls.
+2025-03-15 * "Repay credit card"
+  Liabilities:CreditCard                        978.00 USD
+  Assets:Cash                                  -978.00 USD
+;; Interest is an expense, not a principal repayment.
+2025-04-01 * "Pay mortgage interest"
+  Expenses:Mortgage:Interest                    100.00 USD
+  Assets:Cash                                  -100.00 USD
+;; Salary received in cash.
+2025-06-01 * "Salary"
+  Assets:Cash                                  3000.00 USD
+  Income:Salary                               -3000.00 USD
