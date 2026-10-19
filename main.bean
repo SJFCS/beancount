@@ -4821,5 +4821,10 @@ option "operating_currency" "USD"
 2025-06-15 * "Onion Market" "Buying groceries"
   Liabilities:US:Chase:Slate  -83.11 USD
   Expenses:Food:Groceries      83.11 USD
-2025-06-18 close Income:US:Federal:PreTax401k                    IRAUSD
+
+2025-06-17 pad Income:US:Federal:PreTax401k Income:US:ETrade:GLD:Dividend
+2025-06-18 balance Income:US:Federal:PreTax401k 0 IRAUSD
+2025-06-18 close Income:US:Federal:PreTax401k
+
+
 
