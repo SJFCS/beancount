@@ -7,6 +7,8 @@
 option "title" "Example Beancount file"
 option "operating_currency" "USD"
 
+2019-01-01 custom "fava-option" "auto-reload" "true"
+1990-01-01 custom "fava-option" "language" "zh" 
 
 
 1792-01-01 commodity USD
