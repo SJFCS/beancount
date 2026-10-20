@@ -4803,6 +4803,7 @@ option "operating_currency" "USD"
   Assets:US:Vanguard:Cash   -479.97 USD
 
 2025-06-09 * "Investing 60% of cash in RGAGX"
+  name: "某某基金"
   Assets:US:Vanguard:RGAGX    8.740 RGAGX {82.38 USD, 2025-06-09}
   Assets:US:Vanguard:Cash   -720.00 USD
 
